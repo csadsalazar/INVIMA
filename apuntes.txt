@@ -1,0 +1,153 @@
+ruta
+http://localhost:8080/inventario
+
+gits apoyo
+https://github.com/BrayanAlfonso/InLineManageProject-master.git
+https://github.com/csadsalazar/TALLER-8-Y-9/tree/main
+
+iconos  
+https://ionic.io/ionicons
+
+
+base de datos
+create database inventarioPersonalizado 
+use inventarioPersonalizado
+
+create table MA_Usuarios(
+PK_idUsuario int unique auto_increment not null,
+nombre varchar (50),
+usuario varchar (15),
+cedula int(10),
+password varchar (20),
+dependencia int not null,
+cargo varchar (20) not null,
+contrato varchar (20) not null,
+);
+
+create table MA_Bienes(
+idBien int auto_increment not null,
+PK_Codigo int(12) not null,
+nombre varchar(50) not null,
+placa varchar(6) not null,
+descripcion varchar(150) not null,
+valor int not null,
+FK_Usuario int not null,
+ubicacion varchar(50) not null,
+imagen varchar(50) not null
+);
+
+create table PA_BienesPorUsuario(
++PK_idBienPorUsuario int, 
++FK_Usuario int not null,
++FK_Bien int,
++asunto varchar(25) not null,
++informacion varchar(200) not null,
++fechaObservacion date not null
+);
+
+<-- CONEXION BIENES - USUARIOS -->
+alter table MA_Bienes
+add foreign key (FK_Usuario)
+references MA_Usuarios (PK_idUsuario);
+
+
+<-- CONEXION OBSERVACIONES - USUARIOS -->
+alter table MA_Observaciones
+add foreign key (FK_Usuario)
+references MA_Usuarios (PK_idUsuario);
+
+<-- CONEXION BIENESPORUSUARIO - BIEN -->
+alter table MA_BinenesPorUsuario
+add foreign key (FK_Usuario)
+references MA_Usuarios (PK_idUsuario);
+
+<-- CONEXION BIENESPORUSUARIO - USUARIOS -->
+alter table MA_BinenesPorUsuario
+add foreign key (FK_Bien)
+references MA_Bienes (PK_idBien);
+
+
+DELIMITER //
+CREATE PROCEDURE USP_informaciondebienMA_Bienes_I(
+	IN p_idBien int,
+	IN p_PK_Codigo int,
+	IN p_placa int,
+	IN p_nombre varchar(30),
+	IN p_descripcion varchar(50),
+	IN p_valor int,
+	IN p_estado varchar(8),
+	IN p_grupo int, 
+	IN p_ubicacion int,
+	IN p_imagen varchar(15),
+	IN p_FK_Usuario int
+)
+BEGIN
+    INSERT INTO MA_Bienes (idBien, PK_Codigo, placa, nombre, descripcion, valor, grupo, ubicacion, imagen, FK_Usuario)
+    VALUES (p_idBien, p_PK_Codigo, p_placa, p_nombre, p_descripcion, p_valor, p_grupo, p_ubicacion, p_imagen, p_FK_Usuario);
+END //
+DELIMITER;
+
+
+--- Autor: Cesar Salazar
+Fecha creación: 18/03/2024
+Descripción de los parámetros de entrada: Los parametros del procedimiento son todas las columnas que se encuentran en la tabla MA_Bienes.
+Descripción de los parámetros de salida: Los valores que se muestran en la salida seran los mismos parametros de entrada. 
+Objetivo del procedimiento almacenado/función: El objectivo del procedimiento es poder insertar datos(bienes) a la tabla MA_Bien.
+Modificado por: Sin modificaciones.
+Fecha de Modificación: N/A
+Descripción de la modificación: N/A ---
+
+
+
+DELIMITER //
+CREATE PROCEDURE USP_informacionobservacionMA_BienesPorUsuario_I(
+	IN p_idObservacion int,
+	IN p_FK_Usuario int,
+	IN p_FK_Bien int,
+	IN p_asunto varchar(50),
+	IN p_informacion varchar(200),
+	IN p_fechaObservacion date
+)
+BEGIN
+    INSERT INTO MA_Observaciones (idObservacion, FK_Usuario, FK_Bien, asunto, informacion, fechaObservacion)
+    VALUES (p_idObservacion, p_FK_Usuario, p_FK_Bien, p_asunto, p_informacion, p_fechaObservacion);
+END //
+DELIMITER;
+
+
+--- Autor: Cesar Salazar
+Fecha creación: 18/03/2024
+Descripción de los parámetros de entrada: Los parametros del procedimiento son todas las columnas que se encuentran en la tabla MA_BienesPorUsuario.
+Descripción de los parámetros de salida: Los valores que se muestran en la salida seran los mismos parametros de entrada. 
+Objetivo del procedimiento almacenado/función: El objectivo del procedimiento es poder insertar datos(informacion sobre el bien) a la tabla MA_BienesPorUsuario.
+Modificado por: Sin modificaciones.
+Fecha de Modificación: N/A
+Descripción de la modificación: N/A ---
+
+
+DELIMITER //
+CREATE PROCEDURE USP_estadobienMA_Bienes_U(
+	IN p_PK_idBien int,
+	IN p_estado varchar(8)
+)
+BEGIN
+    UPDATE INTO MA_Bienes (PK_idBien, estado)
+    VALUES (p_PK_idBien, p_estado);
+END //
+DELIMITER;
+
+
+--- Autor: Cesar Salazar
+Fecha creación: 18/03/2024
+Descripción de los parámetros de entrada: Los parametros del procedimiento son las columna PK_idBien la cual identificara el procedimiento y la columna estado la cual sera la que sufrira el cambio, este cambio sera de Revisado, Correcto o Espera en la tabla MA_BienesPorUsuario.
+Descripción de los parámetros de salida: Los valores que se muestran en la salida sera el cambio de estado del bien el cual iniciara con un campo nulo y al ejecutar el procedimiento el estado quedara con el valor sea el caso.
+Objetivo del procedimiento almacenado/función: El objetivo del procedimiento es actualizar el campo estado en la tabla MA_Bienes.
+Modificado por: Sin modificaciones.
+Fecha de Modificación: N/A
+Descripción de la modificación: N/A ---
+
+
+*conexion file server
+*Numero de ticket - CHG-284994-2-100
+
+
