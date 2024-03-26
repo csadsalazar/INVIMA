@@ -1,5 +1,8 @@
 <div class="barra-lateral">
     <div>
+        <div class="logo-pagina">
+            <img src="../resources/img/logo.png" alt="Logo">
+        </div>
         <div class="nombre-pagina">
             <ion-icon name="person-outline"></ion-icon>
             <span>Funcionario</span>
@@ -31,7 +34,7 @@
             <li>
                 <a href="../index.jsp">
                     <ion-icon name="exit-outline"></ion-icon>
-                    <span>Cerrar sesión</span>
+                    <span>Cerrar sesi&oacute;n</span>
                 </a>
             </li>
         </div>
