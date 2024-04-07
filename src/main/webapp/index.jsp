@@ -12,7 +12,7 @@
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="index.html" autocomplete="off" class="sign-in-form">
+            <form action="User" autocomplete="off" class="sign-in-form">
               <div class="logo">
                 <img src="resources/img/logo.png" alt="easyclass"/>
               </div>
@@ -28,6 +28,7 @@
                     minlength="4"
                     class="input-field"
                     autocomplete="off"
+                    name="inputUserName"
                     required
                   />
                   <label>Usuario</label>
@@ -39,17 +40,18 @@
                     minlength="4"
                     class="input-field"
                     autocomplete="off"
+                    name="inputUserPassword"
                     required
                   />
                   <label>Contrase&ntilde;a</label>
                 </div>
 
-                <input type="submit" value="Ingresar" class="sign-btn" />
+                <button class="sign-btn" name="enviar" value="iniciar">Enviar</button>
 
                 <p class="text">
                   Todos los derechos reservados - INVIMA
-                  <a href="administrador/homea.jsp">Admin</a>
-                  <a href="funcionario/homef.jsp">Funcionario</a>
+                  <a href="homea.jsp">Admin</a>
+                  <a href="homef.jsp">Funcionario</a>
                 </p>
               </div>
             </form>

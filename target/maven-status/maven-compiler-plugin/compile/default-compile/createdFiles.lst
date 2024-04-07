@@ -1,0 +1,8 @@
+utils\ConexionBD.class
+models\Observacion.class
+controllers\ObtenerBienPorCodigo.class
+controllers\ListarBienes.class
+models\Bien.class
+models\Usuario.class
+controllers\AgregarObservacion.class
+controllers\AgregarBienServlet.class

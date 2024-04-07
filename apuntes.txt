@@ -8,6 +8,9 @@ https://github.com/csadsalazar/TALLER-8-Y-9/tree/main
 iconos  
 https://ionic.io/ionicons
 
+videos sqlserver
+https://www.youtube.com/watch?v=K8MJtUmo8nk
+https://www.youtube.com/watch?v=0Yj6bzNRfss
 
 base de datos
 create database inventarioPersonalizado 
