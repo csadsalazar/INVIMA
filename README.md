@@ -1,6 +1,15 @@
-#Proyecto enfocado a la oficina administrativa del Invima-
+#Proyecto Invima
+File server y conexion a elda
+Ticket: Caso 100463
 
-Aca se haran las especificaciones que se necesiten:
--Tomcat: 9.0.76
--JDK 17
--Maven 3.9.6
+
+Recursos utilizados
+Java
+Tomcat: 9.0.76
+JDK 17
+Maven 3.9.6
+
+En visual studio code:
+Community Server Connectors
+Extension Pack for Java
+
