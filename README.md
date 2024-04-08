@@ -11,6 +11,7 @@
 	## Extensiones
 	- Community Server Connectors
 	- Extension Pack for Java
+ 	- Mobile simulator - responsive testing tool **(extension de navegador)** 
 2. Java
 3. Tomcat: 9.0.76
 4. JDK 17
@@ -19,5 +20,5 @@
 # Pasos a seguir
 - Se configura variables de entorno en variables del sistema > Path agregar variables de entorno jdk, maven y tomcat
 - Configurar en variables del sistema > Nuevo > En nombre de la JAVA_HOME y MAVEN_HOME > En valor de la se pone la ruta del jdk y maven
-- Si se encuentra ya creado un proyecto dar en open folder en el apartado de java project
-- Si no se encuentra creado un proyecto dar en Create Java Project ...
+- **Si** se encuentra ya creado un proyecto dar en open folder en el apartado de java project
+- **Si NO** se encuentra creado un proyecto dar en Create Java Project ...
